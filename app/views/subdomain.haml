@@ -4,6 +4,20 @@
 / -@keywords = @subdomain.keywords.present? ? @subdomain.keywords : "доставка цветов #{@subdomain.city}  доставка букетов заказ цветов цветы букеты"
 -@description = @subdomain.description.present? ? Sanitize.fragment(@subdomain.description).strip : "Цветочный центр Розарио - доставка цветов #{@subdomain.city}, доставка букетов, оформление праздничных и свадебных букетов, огромный выбор комнатных цветов и рассады."
 - content_for :head do
+  :plain
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "#{@title.gsub('"', '\\"')}",
+      "url": "#{@canonical}/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "#{@canonical}/search?query={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   -# =javascript_include_tag 'jquery.zoom.min'
   =javascript_include_tag 'ang/angular4.min'
   =javascript_include_tag 'ang/lodash.underscore.min'
