@@ -497,7 +497,7 @@ module Rozario
         @items, @need_pagination = get_items(categories, params[:tags], min_price, max_price, params[:sort_by], limit, page)
 
         @childrens = Category.where(parent_id: @category.id)
-        temp = @category.template.blank? ? 'show' : @category.template
+        temp = @category.template.blank? ? 'index' : @category.template
         render 'category/' + temp , layout: 'catalog'
       end
     end

@@ -136,7 +136,7 @@ Rozario::App.controllers :category do
       if request.xhr?; render 'category/withfilters', layout: false
       else
         if !@category.template.nil? || !@category.template.empty?
-          temp = @category.template.empty? ? 'show' : @category.template
+          temp = @category.template.empty? ? 'index' : @category.template
           temp = temp == 'subcats_only' ? 'perekrestok' : temp
           x = ActiveRecord::Base.connection.execute("SELECT * from texts WHERE category=" + @category.id.to_s).to_a
           if x.present?
@@ -152,7 +152,7 @@ Rozario::App.controllers :category do
           render "category/#{temp}", layout: 'catalog'
           # redirect '/'
         else
-          render 'category/show', layout: 'catalog'
+          render 'category/index', layout: 'catalog'
         end
       end
     end
