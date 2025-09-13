@@ -19,13 +19,13 @@
 				.item
 					%h3!= highlight(result.title, @query)
 					%p!= truncate_words(highlight(Sanitize.fragment(result.body), @query), :length => 30)
-					%p.more= link_to 'Смотреть', url_for(:news, :index, result.id)
+					%p.more= link_to 'Смотреть', url_for(:news, :index, result.slug || result.id)
 		- if @articles && @articles.any?
 			- @articles.each do |result|
 				.item
 					%h3!= highlight(result.title, @query)
 					%p!= truncate_words(highlight(Sanitize.fragment(result.body), @query), :length => 30)
-					%p.more= link_to 'Смотреть', url_for(:article, :index, result.id)
+					%p.more= link_to 'Смотреть', url_for(:article, :index, result.slug || result.id)
 		- if @comments && @comments.any?
 			- @comments.each do |result|
 				.item
@@ -36,6 +36,6 @@
 			- @products.each do |result|
 				.item.product-item
 					%h3!= highlight(result.header, @query)
-					.image= link_to image_tag(result.image, :alt => result.alt), url_for(:product, :index, result.id), :title => result.header
-					%p.more= link_to 'Смотреть', url_for(:product, :index, result.id)
+					.image= link_to image_tag(result.image, :alt => result.alt), url_for(:product, :index, result.slug || result.id), :title => result.header
+					%p.more= link_to 'Смотреть', url_for(:product, :index, result.slug || result.id)
 

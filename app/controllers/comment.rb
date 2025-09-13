@@ -125,3 +125,10 @@ Rozario::App.controllers :feedback do
     redirect(url(:feedback, :index))
   end
 end
+
+# Alias controller for backward compatibility with Nginx redirects
+Rozario::App.controllers :comment do
+  get :index do
+    redirect url(:feedback, :index), 301
+  end
+end
