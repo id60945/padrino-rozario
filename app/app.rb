@@ -608,7 +608,11 @@ module Rozario
       @query = strip_tags(params[:query]).mb_chars.downcase
       if @query.length <= 3
         @error = 'Минимальный поисковый запрос — 3 символа.'
-        @products = ['a']
+        @pages = []
+        @news = []
+        @articles = []
+        @comments = []
+        @products = []
       else
         @pages = Page.where("lower(title) like ? or lower(body) like ?", "%#{@query}%", "%#{@query}%").all
         @news = News.where("lower(title) like ? or lower(body) like ?", "%#{@query}%", "%#{@query}%").all
@@ -621,8 +625,8 @@ module Rozario
 
         #@products = Product.find(:all, :conditions => ["lower(title) like ?", "%#{@query}%"])
       end
-      if @products.first.nil?
-        @error= "По вашему запросу ничего не найдено"
+      if @pages.empty? && @news.empty? && @articles.empty? && @comments.empty? && @products.empty?
+        @error = "По вашему запросу ничего не найдено"
       end
       render "search/results"
     end
