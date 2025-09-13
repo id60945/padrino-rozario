@@ -18,6 +18,15 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "#{@title.gsub('"', '\\"')}",
+      "description": "#{@description.gsub('"', '\\"')}",
+      "url": "#{@canonical}/"
+    }
+    </script>
   -# =javascript_include_tag 'jquery.zoom.min'
   =javascript_include_tag 'ang/angular4.min'
   =javascript_include_tag 'ang/lodash.underscore.min'
