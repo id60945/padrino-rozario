@@ -1,0 +1,9 @@
+/.gitignore.bak
+/.git.bak/
+.env
+/public
+/vendor/
+/log/
+/tmp/
+/admin/
+*.bak
