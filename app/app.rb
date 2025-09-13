@@ -72,8 +72,8 @@ module Rozario
     # # MultiCaptcha.default_logger = multi_captcha_logger # Устанавливаем дефолтный логгер для всего гема
     # MultiCaptcha.configure { |config|
     #   config.redis_pool = $redis_pool
-    #   config.site_key   = '0x4AAAAAABCfV39-MLwbfLLE' || ENV['CLOUDFLARE_TURNSTILE_SITE_KEY'] # Важно: используйте переменную окружения
-    #   config.secret_key = '0x4AAAAAABCfV7lb1nQnSRk6x2dk2WJ6r5k' || ENV['CLOUDFLARE_TURNSTILE_SECRET_KEY'] # Используется в хелперах
+    #   config.site_key   = ENV['CLOUDFLARE_TURNSTILE_SITE_KEY'] # Важно: используйте переменную окружения
+    #   config.secret_key = ENV['CLOUDFLARE_TURNSTILE_SECRET_KEY'] # Используется в хелперах
     #   config.failure_app = lambda { |env|
     #     [403, {'Content-Type' => 'text/html'}, ["<h1>Captcha verification failed. Please try again.</h1>"]]
     #   }
